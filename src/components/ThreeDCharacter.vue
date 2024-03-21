@@ -60,7 +60,7 @@
                             <button v-on:click="sayAudio('sayAudioExample')" class="btn btn_child shadow" type="button" id="btn1" value="SAYAUDIO">sayAudio()</button>
                           </td>
                           <td align="left">
-                            <button v-on:click="sayText('Welcome to our text to speech A P I example',3,1,3)" class="btn btn_child shadow" type="button" id="btn1" value="SAYTEXT">sayText()</button>
+                            <button v-on:click="sayText()" class="btn btn_child shadow" type="button" id="btn1" value="SAYTEXT">sayText()</button>
                           </td>
                         </tr>
                       </tbody>
@@ -102,8 +102,21 @@ export default {
   },
 
   methods: {
-    sayText: function (txt, voice, lang, engine) {
-      SitePal.sayText(txt,voice,lang,engine);
+    sayText: async function () {
+      const delay = (ms) => new Promise(res => setTimeout(res, ms));
+      window.sayText("Phone advice for filling out self-assessment and VAT forms is cut back drastically in favour of web services", 3,1,3);
+      await delay(4000)
+      window.stopSpeech();
+      window.sayText("When you refer to Facebook - you mean the facebook app. An app can do as it likes, and is not subject to browser restrictions.", 3,1,3);
+      await delay(4000)
+      window.stopSpeech();
+      window.sayText("They predicted the devices may be used to spot symptoms of the brain robbing disease in the future.", 3,1,3);
+      await delay(4000)
+      window.stopSpeech();
+      window.sayText("Most of follow a set daily routine, which defines how much we move throughout the day and when, known as your daily activity pattern.", 3,1,3);
+      await delay(4000)
+      window.stopSpeech();
+      window.sayText("Researchers from the Johns Hopkins Bloomberg School of Public Health sought to investigate whether activity patterns could shed light on someone's risk of developing Alzheimer's disease.", 3,1,3);
     },
     sayAudio: function (audioName) {
       SitePal.sayAudio(audioName);
