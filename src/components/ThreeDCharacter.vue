@@ -30,7 +30,7 @@
                             <router-link to="/fb">
                               <button class="btn btn_child shadow " type="button" id="btn3" value="FULL BODY">FULL BODY</button>
                             </router-link>
-                            <router-link to="/empty"> 
+                            <router-link to="/empty">
                               <button class="btn btn_child shadow " type="button" id="btn4" value="EMPTY">EMPTY</button>
                             </router-link>
                             <a class="download" href="/api/examples/vue/Sitepal-vue.zip" download="">
@@ -75,7 +75,7 @@
               </tbody>
             </table>
           </td>
-          
+
         </tr>
       </tbody>
     </table>
@@ -101,22 +101,52 @@ export default {
     SitePal
   },
 
+  mounted() {
+    window.vh_audioStarted = () => {
+      this.log("vh_audioStarted");
+    };
+    window.vh_audioEnded = () => {
+      this.log("vh_audioEnded");
+    };
+  },
+
   methods: {
+    log: function (msg) {
+      console.log(`${new Date().toISOString()}: ${msg}`);
+    },
+
     sayText: async function () {
       const delay = (ms) => new Promise(res => setTimeout(res, ms));
-      window.sayText("Phone advice for filling out self-assessment and VAT forms is cut back drastically in favour of web services", 3,1,3);
+
+      this.log("say 1")
+      window.sayText("sentence 1. Phone advice for filling out self-assessment and VAT forms is cut back drastically in favour of web services", 3,1,3);
       await delay(4000)
+      this.log("stop 1")
       window.stopSpeech();
-      window.sayText("When you refer to Facebook - you mean the facebook app. An app can do as it likes, and is not subject to browser restrictions.", 3,1,3);
+
+      this.log("say 2")
+      window.sayText("sentence 2. When you refer to Facebook - you mean the facebook app. An app can do as it likes, and is not subject to browser restrictions.", 3,1,3);
       await delay(4000)
+      this.log("stop 2")
       window.stopSpeech();
-      window.sayText("They predicted the devices may be used to spot symptoms of the brain robbing disease in the future.", 3,1,3);
+
+      this.log("say 3")
+      window.sayText("sentence 3. They predicted the devices may be used to spot symptoms of the brain robbing disease in the future.", 3,1,3);
       await delay(4000)
+      this.log("stop 3")
       window.stopSpeech();
-      window.sayText("Most of follow a set daily routine, which defines how much we move throughout the day and when, known as your daily activity pattern.", 3,1,3);
+
+      this.log("say 4")
+      window.sayText("sentence 4. Most of follow a set daily routine, which defines how much we move throughout the day and when, known as your daily activity pattern.", 3,1,3);
       await delay(4000)
+      this.log("stop 4")
       window.stopSpeech();
-      window.sayText("Researchers from the Johns Hopkins Bloomberg School of Public Health sought to investigate whether activity patterns could shed light on someone's risk of developing Alzheimer's disease.", 3,1,3);
+
+      this.log("say 5")
+      window.sayText("sentence 5. Researchers from the Johns Hopkins Bloomberg School of Public Health sought to investigate whether activity patterns could shed light on someone's risk of developing Alzheimer's disease.", 3,1,3);
+      await delay(4000)
+      this.log("stop 5")
+      window.stopSpeech();
     },
     sayAudio: function (audioName) {
       SitePal.sayAudio(audioName);
